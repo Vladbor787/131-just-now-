@@ -3,6 +3,7 @@ const val MINUTE_IN_SECONDS = 60
 const val SECONDS_IN_HOURS = 3600
 const val SECONDS_IN_DAY = 86400
 const val HOURS_IN_DAYS = 24
+
 val fraseMap = mapOf("justNow" to " только что", "yesterday" to " вчера",
     " today" to " сегодня","ago" to " назад","long ago" to " давно",)
 val arrOfMinute = arrayOf("минуту", "минуты", "минут")
@@ -14,11 +15,12 @@ fun main() {
         println("Введите количество секунд")
         val numberOfSeconds = readLine()?.toInt()
         if (numberOfSeconds != null && numberOfSeconds > 0) {
-           println("был(а) " + toTimeAgo(numberOfSeconds))
+            println("был(а) " + toTimeAgo(numberOfSeconds))
         }
     } while (numberOfSeconds != -1)
 
 }
+
 fun toTimeAgo(n: Int): String? {
 
     val numberOfHours = n / SECONDS_IN_HOURS % HOURS_IN_DAYS
@@ -34,9 +36,12 @@ fun toTimeAgo(n: Int): String? {
    }
 
 }
-fun endingUtil(T: Int, arrsome: Array<String>): String {
-    return if (T % 10 == 1 && T % 100 != 11) T.toString() + " " + arrsome[0]
-    else if (T % 10 == 2 && T % 100 != 12 || T % 10 == 3 && T % 100 != 13 || T % 10 == 4 && T % 100 != 14) T.toString() + " " + arrsome[1]
-    else T.toString() + " " + arrsome[2]
-
+fun endingUtil(T: Int, arrSome: Array<String>): String {
+    return when (T % 10) {
+        1-> if (T % 100 == 11) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[0]}
+        2-> if (T % 100 == 12) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[1]}
+        3-> if (T % 100 == 13) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[1]}
+        4-> if (T % 100 == 14) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[1]}
+        else -> T.toString() + " " + arrSome[2]
+    }
 }
