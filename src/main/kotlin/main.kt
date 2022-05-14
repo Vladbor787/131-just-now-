@@ -36,12 +36,12 @@ fun toTimeAgo(n: Int): String? {
    }
 
 }
-fun endingUtil(T: Int, arrSome: Array<String>): String {
+fun endingUtil(T: Int, arrOfMinutesAndHours: Array<String>): String {
     return when (T % 10) {
-        1-> if (T % 100 == 11) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[0]}
-        2-> if (T % 100 == 12) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[1]}
-        3-> if (T % 100 == 13) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[1]}
-        4-> if (T % 100 == 14) { T.toString() + " " + arrSome[2]}else {T.toString() + " " + arrSome[1]}
-        else -> T.toString() + " " + arrSome[2]
+        1-> if (T % 100 == 11) { T.toString() + " " + arrOfMinutesAndHours[2]}else {T.toString() + " " + arrOfMinutesAndHours[0]}
+        2-> if (T % 100 == 12) { T.toString() + " " + arrOfMinutesAndHours[2]}else {T.toString() + " " + arrOfMinutesAndHours[1]}
+        3-> if (T % 100 == 13) { T.toString() + " " + arrOfMinutesAndHours[2]}else {T.toString() + " " + arrOfMinutesAndHours[1]}
+        4-> if (T % 100 == 14) { T.toString() + " " + arrOfMinutesAndHours[2]}else {T.toString() + " " + arrOfMinutesAndHours[1]}
+        else -> T.toString() + " " + arrOfMinutesAndHours[2]
     }
 }
